@@ -1,0 +1,78 @@
+1-1
+G( req -> (X(grant) & X(X(grant)) & X(X(X(grant))) ))
+1-2
+G( grant -> X(!grant))
+1-3
+G( cancel -> X(!grant U go))
+2-1
+G( req -> (X(grant) |  X(X(grant)) |  X(X(X(grant))) ))
+2-2
+G( grant -> X(!grant))
+2-3
+G( cancel -> X(!grant U go))
+3
+(G( cancel -> X(go) ))->(G( req -> (X(grant) |  X(X(grant)) |  X(X(X(grant))))) &  G( grant -> X(!grant)) &  G( cancel -> X(!grant U go)))
+4
+(G( cancel -> (X(go) |  X(X(go))) )) -> (G( req -> (X(grant) |  X(X(grant)) |  X(X(X(grant))) )) &  G( grant -> X(!grant)) &  G( cancel -> X(!grant U go)))
+5
+(G(cancel -> (X(go) |  X(X(go)))))   -> (  G(req -> (X(    grant |  cancel) |   X(X(  grant |  cancel)) |  X(X(X(grant |  cancel))) )) &  G( grant  -> X(!grant)) &  G( cancel -> X(!grant U go)))
+6
+(G(cancel -> (X(go) |  X(X(go)) |  X(X(X(go))) )))   -> ( G(req -> (X(    grant |  cancel) |   X(X(  grant |  cancel)) |  X(X(X(grant |  cancel))) )) &  G( grant  -> X(!grant)) &  G( cancel -> X(!grant U go)))
+7
+(G(cancel -> (X(go) |  X(X(go))))) -> ((G(cancel -> X((!grant) U go)))& ((G(grant -> X(!grant)))& (G(req -> ((grant |  cancel) |  X(grant |  cancel) |  X(X(grant |  cancel)) |  X(X(X(grant |  cancel))))))))
+8
+G(F r) -> G(F g)
+9
+(G(F(req))) -> ((G(!grant -> (!grant U req)))&(((!grant))&((G(req -> F(grant)))&(G(F(grant))))))
+10
+(G(F(req)) |  F(cancel))->(G(F(grant)) |  G(ack))
+11
+!(G((req)->F(ack)) &  G((go)->F(grant)))
+12
+G(!grant) |  (G((req)->F(ack)) |  G((go)->F(grant)))
+13
+(G(r1)->F(a1)) &  (G(!r1)->F(!a1))
+14
+(G(F(r0)) -> G(F(g0))) &  (G(F(r1)) -> G(F(g1))) &  G(!(g0 &  g1))
+15
+G(r1 -> F(a1))& G(r2 -> F(a2))& G(!(a1 &  a2))& ((!a1 U r1) |  G(!a1))& ((!a2 U r2) |  G(a2))
+16
+G(r0 -> F(a0))& G(r1 -> F(a1))& G(r2 -> F(a2))& G(!(a0 &  a1))& G(!(a0 &  a2))& G(!(a1 &  a2))& ((!a0 U r0) |  G(!a0))& ((!a1 U r1) |  G(!a1))& ((!a2 U r2) |  G(!a2))
+17
+G(F(i0)) -> G(F(a0))& G(F(i1)) -> G(F(a1))& G(F(a2))& G(!(a0 &  a1))& G(!(a1 &  a2))& G(!(a2 &  a0))
+18
+G(F(i0)) -> G(F(a0))& G(F(i1)) -> G(F(a1))& G(F(i2)) -> G(F(a2))& G(F(a3))& G(!(a0 &  a1))& G(!(a0 &  a2))& G(!(a0 &  a3))& G(!(a1 &  a2))& G(!(a1 &  a3))& G(!(a2 &  a3))
+19
+G(F(ets)) -> (G(hl -> (hl U ets)) &  G(fl -> (fl U ets)) &  G(!hl |  !fl) &  G(ec -> F(fl)) &  G(F(hl)))
+20
+(!etc &  G(!etc &  !sts -> X(!etc))& G(etc -> F(!etc))& G(sts -> X etc)) -> (G(shlr &  X shlg -> sts) &  G(sflr &  X sflg -> sts) &  G(sflg &  (!etc |  !ec) -> X sflr) &  G(shlg &  (!etc &  ec)  -> X shlr) &  G((sflr |  shlr)) &  G(ec -> F sflg ) &  G F shlg)
+21
+(G(!r1 |  !r2) &  G(!r1 |  !r3) &  G(!r1 |  !r4) &  G(!r2 |  !r3) &  G(!r2 |  !r4) &  G(!r3 |  !r4)) -> (G(r1 -> (X(g1) |  X(X(g1)) |  X(X(X(g1))))) &  G(r2 -> (X(g2) |  X(X(g2)) |  X(X(X(g2))))) &  G(r3 -> (X(g3) |  X(X(g3)) |  X(X(X(g3))))) &  G(r4 -> (X(g4) |  X(X(g4)) |  X(X(X(g4))))) &  G(!g1 |  !g2) &  G(!g1 |  !g3) &  G(!g1 |  !g4) &  G(!g2 |  !g3) &  G(!g2 |  !g4) &  G(!g3 |  !g4))
+22
+(!godown &  !goup &  !ws &  G(!godown |  !goup) &  G(F(!ws)) &  G((!ws &  ss) -> X(!ws)) &  G(ws -> (X(!ws) |  X(X(!ws)) |  X(X(X(!ws))) |  X(X(X(X(!ws))))))) -> (G(goup -> F(!ss)) &  G(godown  -> F(ss)) &  G(!(ws &  X(ss))))
+23
+(G((e &  X(s)) -> X(e)) &  G(F(!e))) -> G(X(!e &  X(!s)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
